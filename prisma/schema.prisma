@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["metrics"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Number{
+    id Int @id @default(autoincrement())
+    number String @unique
+}
+model Product{
+    id Int @id @default(autoincrement())
+    title String
+    price Int
+    img String
+    description String
+    weight Int
+    type Type @relation(fields: [typeId], references: [id])
+    typeId Int
+    counterForRelevant Int @default(0)
+    filterType FilterType[]
+}
+
+model Type{
+    id Int @id @default(autoincrement())
+    name Int
+    product Product[]
+}
+model FilterType {
+    id Int @id @default(autoincrement())
+    name Int
+    product Product[]
+}
