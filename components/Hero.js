@@ -33,16 +33,16 @@ export default function Hero(){
             onSlideChange={() => {}}
         >
             <SwiperSlide>
-                <Image src={HeroImage} width={3840} height={1280}/>
+                <Image alt="Акция 10% за заказ с собой" src={HeroImage} width={3840} height={1280}/>
             </SwiperSlide>
             <SwiperSlide>
-                <Image src={HeroImage} width={3840} height={1280}/>
+                <Image alt="Акция 10% за заказ с собой" src={HeroImage} width={3840} height={1280}/>
             </SwiperSlide>
             <SwiperSlide>
-                <Image src={HeroImage} width={3840} height={1280}/>
+                <Image alt="Акция 10% за заказ с собой" src={HeroImage} width={3840} height={1280}/>
             </SwiperSlide>
             <SwiperSlide>
-                <Image src={HeroImage} width={3840} height={1280}/>
+                <Image alt="Акция 10% за заказ с собой" src={HeroImage} width={3840} height={1280}/>
             </SwiperSlide>
             <br/>
         </Swiper>

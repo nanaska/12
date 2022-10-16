@@ -40,8 +40,8 @@ export default function ItemCartForBusket({id, title,price,img,description, weig
                     <span className="font-[400] text-[18px] text-[#CBCBCB]">{weight} Г</span>
                 </div>
                 <div className="flex  items-start md:items-center justify-start flex-col pr-2 w-[50%] md:w-full">
-                    <div className="flex  items-center font-normals justify-center whitespace-nowrap text-center md:text-center font-normal sm:text-[24px] text-[16px]"><h3>{title}</h3></div>
-                    <div className="grid grid-cols-2 ">
+                    <div className="flex  items-center font-normals justify-center text-center md:text-center font-normal sm:text-[24px] text-[16px]"><h3>{title}</h3></div>
+                    <div className="flex items-center justify-between  w-full md:px-2">
                         <div className="md:p-0  sm:ml-0 sm:px-0 flex items-center justify-start md:justify-center whitespace-nowrap rounded text-[#313131] sm:text-[22px] text-[22px]">{price} ₽</div>
                         {count === undefined && <div className="outline outline-2  outline-[#FF8932] text-[18px] md:text-[18px] my-2 px-3 py-2 md:px-4  whitespace-nowrap   text-black  duration-75 active:scale-105 select-none  flex justify-center  hover:text-white items-center hover:bg-[#FF8932] rounded-[90px]" onClick={()=> onClickAdd(id,title,price,img) }>Выбрать {count}</div>}
                         {count !== undefined && count > 0 &&

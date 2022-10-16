@@ -1,6 +1,7 @@
 import {YMaps, Map, Polyline} from "react-yandex-maps";
 import {motion, useScroll} from "framer-motion";
 import {Container} from "@chakra-ui/react";
+import Head from "next/head";
 
 export default function Delivery() {
     const {scrollYProgress} = useScroll();
@@ -339,10 +340,13 @@ export default function Delivery() {
         ]
     ]
     return (
-
+        <>
+            <Head>
+                <title>Доставка</title>
+            </Head>
             <div className="flex flex-col  items-center justify-between">
                 <div className="mr-auto my-3 font-bold text-[32px] md:text-[48px]">
-                    Зона доставки
+                    <h2> Зона доставки </h2>
                 </div>
 
                 <YMaps>
@@ -392,5 +396,5 @@ export default function Delivery() {
                 {/*</div>*/}
 
             </div>
-        )
+        </>)
 }

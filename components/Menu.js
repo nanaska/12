@@ -37,11 +37,12 @@ export default function Menu() {
 
             <div className=" grid  place-content-stretch grid-cols-2 grid-rows-18  gap-2">
 
-                <CardForPhoneMenu imgType="hamburger.png" click={1} text="Бургеры" bgColor="bg-[#4F85B6]"/>
-                <CardForPhoneMenu imgType="rollspng.png" click={2} text="Суши и роллы" bgColor="bg-[#B440DD]"/>
-                <CardForPhoneMenu imgType="salats.png" click={3} text="Салаты" bgColor="bg-[#91BB5B]"/>
-                <CardForPhoneMenu imgType="zakuski.png" click={4} text="Закуски" bgColor="bg-[#D27643]"/>
-
+                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={1} text="Бургеры" bgColor="bg-[#4F85B6]"/>
+                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={2} text="Суши и роллы" bgColor="bg-[#B440DD]"/>
+                <CardForPhoneMenu altProp="Салаты" imgType="salats.png" click={3} text="Салаты" bgColor="bg-[#91BB5B]"/>
+                <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={4} text="Закуски" bgColor="bg-[#D27643]"/>
+                <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={5} text="Супы" bgColor="bg-[#DBC473]"/>
+                <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={6} text="Горячее" bgColor="bg-[#FFA36F]"/>
             </div>
         </motion.div>
         </AnimatePresence>}
@@ -49,21 +50,31 @@ export default function Menu() {
         duration: .5,
             type: "tween"}
         } animate={{opacity: 1, x:0}} exit={{opacity: 0, x:-1000}}>
-
-
-                <PizzaMenu/>
-
-
+            <div name="BurgersMenu"><MenuTemplateForNonFilterterd typeForProducts={1} nameForMenu={`Бургеры`}/></div>
         </motion.div> </AnimatePresence>}
         {typeMenuu == 2 && width < 768 &&   <AnimatePresence> <motion.div initial={{opacity: 0, x: -1000}} transition={{
             duration: .5,
             type: "tween"}
         } animate={{opacity: 1, x:0}} exit={{opacity: 0, x:-1000}}>
-
-
-
-            <RollsMenu/>
-
+            <div name="RollsMenu"><RollsMenu/></div>
+        </motion.div> </AnimatePresence>}
+        {typeMenuu == 3 && width < 768 &&   <AnimatePresence> <motion.div initial={{opacity: 0, x: -1000}} transition={{
+            duration: .5,
+            type: "tween"}
+        } animate={{opacity: 1, x:0}} exit={{opacity: 0, x:-1000}}>
+            <div name="SalatMenu"><MenuTemplateForNonFilterterd typeForProducts={3} nameForMenu={`Салаты`}/></div>
+        </motion.div> </AnimatePresence>}
+        {typeMenuu == 4 && width < 768 &&   <AnimatePresence> <motion.div initial={{opacity: 0, x: -1000}} transition={{
+            duration: .5,
+            type: "tween"}
+        } animate={{opacity: 1, x:0}} exit={{opacity: 0, x:-1000}}>
+            <div name="FionceMenu"><MenuTemplateForNonFilterterd typeForProducts={4} nameForMenu={`Закуски`}/></div>
+        </motion.div> </AnimatePresence>}
+        {typeMenuu == 5 && width < 768 &&   <AnimatePresence> <motion.div initial={{opacity: 0, x: -1000}} transition={{
+            duration: .5,
+            type: "tween"}
+        } animate={{opacity: 1, x:0}} exit={{opacity: 0, x:-1000}}>
+            <div name="SoapMenu"><MenuTemplateForNonFilterterd typeForProducts={5} nameForMenu={`Супы`}/></div>
         </motion.div> </AnimatePresence>}
         {width > 768 && <>
             <div name="BurgersMenu"><MenuTemplateForNonFilterterd typeForProducts={1} nameForMenu={`Бургеры`}/></div>

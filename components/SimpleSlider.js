@@ -80,9 +80,9 @@ export default function  SimpleSlider() {
         speed: 500,
         slidesToShow: 4,
         focusOnSelect: false,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        slidesToScroll: 2,
+        // nextArrow: <SampleNextArrow />,
+        // prevArrow: <SamplePrevArrow />,
         initialSlide: 1,
         responsive: [
             {
@@ -116,27 +116,28 @@ export default function  SimpleSlider() {
     };
         return (
             <div className="m-2">
-                <Slider {...settings}>
-                    {content !== undefined &&  <div className="mx-0">
-
+                <Slider {...settings} >
+                    {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
+                        <ItemCartForBusket id={content[0].id} description={content[0].description} img={content[0].img}
+                                           price={content[0].price} title={content[0].title} weight={content[0].weight}/>
                         </div>}
-                    {content !== undefined &&  <div className="mx-0">
+                    {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
                         <ItemCartForBusket id={content[1].id} description={content[1].description} img={content[1].img}
                                   price={content[1].price} title={content[1].title} weight={content[1].weight}/>
                     </div>}
-                    {content !== undefined &&  <div className="mx-0">
+                    {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
                         <ItemCartForBusket id={content[2].id} description={content[2].description} img={content[2].img}
                                   price={content[2].price} title={content[2].title} weight={content[2].weight}/>
                     </div>}
-                    {content !== undefined &&  <div className="mx-0">
+                    {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
                         <ItemCartForBusket id={content[3].id} description={content[3].description} img={content[3].img}
                                   price={content[3].price} title={content[3].title} weight={content[3].weight}/>
                     </div>}
-                    {content !== undefined &&  <div className="mx-0">
+                    {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
                         <ItemCartForBusket id={content[0].id} description={content[0].description} img={content[0].img}
                                   price={content[0].price} title={content[0].title} weight={content[0].weight}/>
                     </div>}
-                    {content !== undefined && <div className="mx-0">
+                    {content !== undefined && <div className="mx-0 flex items-center justify-center">
                         <ItemCartForBusket id={content[0].id} description={content[0].description} img={content[0].img}
                                   price={content[0].price} title={content[0].title} weight={content[0].weight}/>
                     </div>}

@@ -39,7 +39,7 @@ export default function Uborshicha() {
             <Image src={`/Barmen.png`} width={200} height={200}/>
 
             <div className="mt-2">
-                <span className="text-[24px] font-normal">Бармен</span>
+                <span className="text-[24px] font-normal"><h3>Бармен</h3></span>
             </div>
             <div className="mt-4">
 

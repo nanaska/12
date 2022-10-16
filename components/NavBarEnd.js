@@ -15,7 +15,7 @@ export default function NavBarEnd(){
                         className="rounded-[90px] px-[7px] py-[0px]  bg-orange-300 text-white">{totalCount}</div>
 
                 </div>}
-                <Image className="" src={Garbage} height={40} width={40}/>
+                <Image className="" alt="Корзина" src={Garbage} height={40} width={40}/>
             </div>
             <a className=" flex items-center justify-center text-xl font-medium">Корзина</a>
         </div>

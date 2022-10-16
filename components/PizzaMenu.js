@@ -52,7 +52,7 @@ export default function PizzaMenu() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     "producttype": type,
-                    "filtertype": [1,2,3]
+                    "filtertype": [1,2,3,4,5,6]
 
                 })
             }

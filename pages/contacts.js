@@ -1,22 +1,25 @@
 import {Container} from "@chakra-ui/react";
-import {Map, Polyline, YMaps, GeoObject, Placemark} from "react-yandex-maps";
+import {Map, YMaps} from "react-yandex-maps";
+import Head from "next/head";
 
 export default function Contacts() {
-    return (<div className="flex items-center justify-center">
+    return (<><Head>
+        <title>Контакты</title>
+    </Head><main className="flex items-center justify-center">
         <Container maxWidth={1580}>
-            <div className="flex mt-10 items-center py-2 justify-center">
+            <div className="flex mt-10 items-start py-2 justify-center">
                 <div className="flex flex-col items-start justify-start">
-                    <div className="text-[24px]  font-bold ">Контакты</div>
+                    <h2 className="text-[24px]  font-bold ">Контакты</h2>
                     <div className="flex-col flex items-start justify-start">
-                        <h1 className="font-bold">Семейный ресторан в городе Данилов
-                        </h1>
+                        <h2 className="font-bold">Семейный ресторан в городе Данилов
+                        </h2>
                         <div>
                             <span className="font-bold">Адресс:</span>
                             <span><h3>г. Данилов  ул. Карла Маркса, дом 19Б</h3></span>
                         </div>
                         <div>
                             <span className="font-bold">Телефон для бронирования:</span>
-                            <span><a href="tel:89610220220"><h3>8 (961) 022-02-20</h3></a></span>
+                            <span><h3><a href="tel:89610220220">8 (961) 022-02-20</a></h3></span>
                         </div>
                         <div>
                             <span className="font-bold">График работы:</span>
@@ -44,5 +47,5 @@ export default function Contacts() {
         </Container>
 
 
-    </div>)
+    </main></>)
 }

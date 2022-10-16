@@ -18,7 +18,7 @@ export default function NavBarStart(){
 
                 </div>
                 <Link href="/"><div className="px-1 hover:bg-[#AAAA] rounded duration-75">
-                    <Image src="/vectorpaint.png" width={192} height={60}/>
+                    <Image src="/vectorpaint.png" alt="Лого Сагай Палермо" width={192} height={60}/>
                 </div></Link>
             </>}
             {typeMenuu !== 0 && <div>

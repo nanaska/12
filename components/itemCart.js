@@ -43,10 +43,10 @@ export default function ItemCart({id, title,price,img,description, weight}){
             <span className="font-[400] text-[18px] text-[#CBCBCB]">{weight} Г</span>
         </div>
         <div className="flex  items-center justify-center flex-col pr-2 w-[50%] md:w-full">
-            <div className="flex  items-center font-normals justify-center whitespace-nowrap text-center md:text-center font-normal sm:text-[32px] text-[24px]"><h3>{title}</h3></div>
-            <p className="flex text-center items-center text-start py-3 justify-start text-[18px] text-[#868484] min-h-[50px]"><h4>{description}</h4></p>
-            <div className="grid grid-cols-2 gap-x-3 place-items-center ">
-                <div className="md:p-3   sm:ml-0 sm:px-4 flex items-center justify-center whitespace-nowrap rounded text-[#313131] sm:text-[28px] text-[24px]">{price} ₽</div>
+            <div className="flex  items-center font-normals justify-center  text-center md:text-center font-normal sm:text-[32px] text-[24px]"><h4>{title}</h4></div>
+            <p className="flex text-center items-center text-start py-3 justify-start text-[18px] text-[#868484] min-h-[50px]"><h5>{description}</h5></p>
+            <div className="flex items-center justify-between  w-full md:px-2">
+                <span className="md:p-3   sm:ml-0 sm:px-4 flex items-center justify-center whitespace-nowrap rounded text-[#313131] sm:text-[28px] text-[24px]">{price} ₽</span>
                 {count === undefined && <div className="outline outline-2 md:py-2 outline-[#FF8932] md:my-1 whitespace-nowrap  sm:px-4 p-2 text-black  duration-75 active:scale-105 select-none  sm:py-1 flex justify-center sm:p-5 hover:text-white items-center hover:bg-[#FF8932] rounded-[90px]" onClick={()=> onClickAdd(id,title,price,img) }>Выбрать {count}</div>}
                 {count !== undefined && count > 0 &&
                     <div className="flex w-[93px]  sm:w-[118px] items-center justify-center  border-solid border-2 select-none rounded-[180px]  border-[#FF8932] ">
