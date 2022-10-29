@@ -43,7 +43,7 @@ export default function ItemCartForBusket({id, title,price,img,description, weig
                     <div className="flex  items-center font-normals justify-center text-center md:text-center font-normal sm:text-[24px] text-[16px]"><h3>{title}</h3></div>
                     <div className="flex items-center justify-between  w-full md:px-2">
                         <div className="md:p-0  sm:ml-0 sm:px-0 flex items-center justify-start md:justify-center whitespace-nowrap rounded text-[#313131] sm:text-[22px] text-[22px]">{price} ₽</div>
-                        {count === undefined && <div className="outline outline-2  outline-[#FF8932] text-[18px] md:text-[18px] my-2 px-3 py-2 md:px-4  whitespace-nowrap   text-black  duration-75 active:scale-105 select-none  flex justify-center  hover:text-white items-center hover:bg-[#FF8932] rounded-[90px]" onClick={()=> onClickAdd(id,title,price,img) }>Выбрать {count}</div>}
+                        {count === undefined && <div className="outline outline-2  outline-[#FF8932] text-[18px] md:text-[18px] my-2 px-3 mx-1 py-2 md:px-4  whitespace-nowrap   text-black  duration-75 active:scale-105 select-none  flex justify-center  hover:text-white items-center hover:bg-[#FF8932] rounded-[90px]" onClick={()=> onClickAdd(id,title,price,img) }>Выбрать {count}</div>}
                         {count !== undefined && count > 0 &&
                             <div className="flex w-[93px]  sm:w-[118px] items-center justify-center  border-solid border-2 my-2 select-none rounded-[180px]  border-[#FF8932] ">
                                 <div className=" flex text-[18px] items-center  cursor-pointer justify-center py-1  w-[40px] h-[10px] px-3"

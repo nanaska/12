@@ -17,7 +17,8 @@ function MyApp({Component, pageProps}) {
     const [na, setNa] = useState(false)
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
-        console.log(process.env.DATABASE_URL, "123")
+
+
         return () => window.removeEventListener('scroll', handleScroll)
     })
 
