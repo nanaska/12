@@ -134,12 +134,12 @@ export default function  SimpleSlider() {
                                   price={content[3].price} title={content[3].title} weight={content[3].weight}/>
                     </div>}
                     {content !== undefined &&  <div className="mx-0 flex items-center justify-center">
-                        <ItemCartForBusket id={content[0].id} description={content[0].description} img={content[0].img}
-                                  price={content[0].price} title={content[0].title} weight={content[0].weight}/>
+                        <ItemCartForBusket id={content[4].id} description={content[4].description} img={content[4].img}
+                                  price={content[4].price} title={content[4].title} weight={content[4].weight}/>
                     </div>}
                     {content !== undefined && <div className="mx-0 flex items-center justify-center">
-                        <ItemCartForBusket id={content[0].id} description={content[0].description} img={content[0].img}
-                                  price={content[0].price} title={content[0].title} weight={content[0].weight}/>
+                        <ItemCartForBusket id={content[5].id} description={content[5].description} img={content[5].img}
+                                  price={content[5].price} title={content[5].title} weight={content[5].weight}/>
                     </div>}
                 </Slider>
             </div>

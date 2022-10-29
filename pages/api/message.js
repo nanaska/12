@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     if(time == 'Ко времени') time = "Ко времени" + " " + exactTime
     const place = req.body.place
     const totalprice = req.body.totalPrice
-    const newFormat = Object.values(products).map(elem => elem.title + "x" + elem.count + " " + elem.price * elem.count + "Р").join(`%0A `)
+    const newFormat = Object.values(products).map(elem => elem.title + " "  + "x" + elem.count + " " + elem.price * elem.count + "Р").join(`%0A `)
     console.log(newFormat)
     if(req.body.data.Comment.length > 0){
         const a = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage?chat_id=-1001158901870&text=Заказ:%0A----------------------%0A ${newFormat}%0A----------------------%0AИмя: ${name}%0AНомер телефона: ${phone}%0AАдресс: ${adress}%0AМесто: ${place}%0AМетод оплаты: ${payAproach}%0AВремя: ${time}%0AКомментарий для курьера: ${req.body.data.Comment}%0AОбщая цена: ${totalprice} Р`)

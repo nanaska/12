@@ -9,6 +9,8 @@ import {useEffect, useRef, useState} from "react";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Head from "next/head";
+
+
 function MyApp({Component, pageProps}) {
 
     const [preHe, setPreHe] = useState(false)
@@ -21,40 +23,46 @@ function MyApp({Component, pageProps}) {
 
     const handleScroll = () => {
 
-        if(scrollY > 200){
+        if (scrollY > 200) {
             setPreHe(true)
-        }else{
+        } else {
             setPreHe(false)
         }
-        if(scrollY >= 200){
+        if (scrollY >= 200) {
             setNa(true)
-        }else{
+        } else {
             setNa(false)
         }
     }
 
     return (<>
-    <Head> <meta name="viewport" content="width=device-width, initial-scale=1"></meta></Head>
-        <ChakraProvider>
-            <Provider store={store}>
-                <div className= "bg-[#EFEEEE]">
-            <Container maxWidth={1580}>
-                    <PreHeader/>
-                    </Container>
-                </div>
-                <div className={na? "sticky shadow transition ease-in duration-300 z-20 top-0 justify-between w-full bg-[#fff]":"flex shadow transition ease-in duration-300 z-20 justify-between w-full bg-[#fff]"}>
-                    <Container onScroll={handleScroll} className="flex justify-between " maxWidth={1580}>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            </Head>
 
-                        <Navbar/>
-                    </Container>
-                </div>
 
-                <Component {...pageProps} ></Component>
-                <footer>
-                <Footer/>
-                </footer>
-            </Provider>
-        </ChakraProvider></>
+                <ChakraProvider>
+                    <Provider store={store}>
+                        <div className="bg-[#EFEEEE]">
+                            <Container maxWidth={1580}>
+                                <PreHeader/>
+                            </Container>
+                        </div>
+                        <div
+                            className={na ? "sticky shadow transition ease-in duration-300 z-20 top-0 justify-between w-full bg-[#fff]" : "flex shadow transition ease-in duration-300 z-20 justify-between w-full bg-[#fff]"}>
+                            <Container onScroll={handleScroll} className="flex justify-between " maxWidth={1580}>
+
+                                <Navbar/>
+                            </Container>
+                        </div>
+
+                        <Component {...pageProps} ></Component>
+                        <footer>
+                            <Footer/>
+                        </footer>
+                    </Provider>
+                </ChakraProvider>
+          </>
     )
 }
 
