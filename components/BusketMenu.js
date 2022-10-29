@@ -23,7 +23,7 @@ export default function BusketMenu({}) {
     const [ad, setAD] = useState(true)
     const [ac, setAc] = useState(true)
     const dispatch = useDispatch()
-    const [phone, setPhone] = useState("")
+    const [phone, setPhone] = useState("+7")
     const [code, setCode] = useState("")
     const [agrement, setAgrement] = useState(false)
     const [formData, setFormData] = useState(null)
@@ -130,7 +130,16 @@ export default function BusketMenu({}) {
 
 
     }
-
+    useEffect(()=>{
+        if(phone[1] !== "7"){
+            setPhone("+7")
+            console.log(7)
+        }
+        if(phone[0] !== "+"){
+            setPhone("+7")
+            console.log("+")
+        }
+    },[phone])
     return (<div>
         <div className="items-center justify-center flex flex-col ">
             <div className="w-full mx-0 flex px-2 md:px-6 flex-col">
@@ -202,8 +211,13 @@ export default function BusketMenu({}) {
                                             required: true,
 
                                         })}
+                                        maxLength="12"
+
                                         onChange={(e)=> {
                                            setPhone(e.target.value)
+
+
+
                                         }}
                                         type="tel"
                                         value={phone}
