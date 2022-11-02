@@ -48,7 +48,7 @@ export default function  SimpleSlider() {
     useEffect(() => {
 
         awdf(22)
-    }, )
+    }, [])
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
         return (
