@@ -3,8 +3,15 @@ import Interpreter from "../components/Interpreter";
 import Uborshicha from "../components/Uborshicha";
 import {Container} from "@chakra-ui/react";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { setMenuFilter } from "../slices/menuSlice";
+import { useEffect } from "react";
+
 
 export default function Vacation() {
+    const dispatch = useDispatch()
+    useEffect(()=>{dispatch(setMenuFilter(0))},[])
+
     return (<>
         <Head>
             <title>Вакансии</title>

@@ -11,9 +11,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import Head from "next/head";
 
 
-function MyApp({Component, pageProps}) {
 
-    const [preHe, setPreHe] = useState(false)
+function MyApp({Component, pageProps}) {
+  
+ 
     const [na, setNa] = useState(false)
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
@@ -24,11 +25,7 @@ function MyApp({Component, pageProps}) {
 
     const handleScroll = () => {
 
-        if (scrollY > 200) {
-            setPreHe(true)
-        } else {
-            setPreHe(false)
-        }
+        
         if (scrollY >= 200) {
             setNa(true)
         } else {
@@ -50,7 +47,7 @@ function MyApp({Component, pageProps}) {
                             </Container>
                         </div>
                         <div
-                            className={na ? "sticky shadow transition ease-in duration-300 z-20 top-0 justify-between w-full bg-[#fff]" : "flex shadow transition ease-in duration-300 z-20 justify-between w-full bg-[#fff]"}>
+                            className={na ? "sticky shadow transition ease-in duration-300 z-20 top-[-0.1px] justify-between w-full bg-[#fff]" : "flex shadow transition ease-in duration-300 z-20 justify-between w-full bg-[#fff]"}>
                             <Container onScroll={handleScroll} className="flex justify-between " maxWidth={1580}>
 
                                 <Navbar/>

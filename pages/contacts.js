@@ -1,8 +1,14 @@
 import {Container} from "@chakra-ui/react";
 import {Map, YMaps} from "react-yandex-maps";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { setMenuFilter } from "../slices/menuSlice";
+import { useEffect } from "react";
 
 export default function Contacts() {
+    const dispatch = useDispatch()
+    useEffect(()=>{dispatch(setMenuFilter(0))},[])
+    
     return (<><Head>
         <title>Контакты</title>
     </Head><main className="flex items-center justify-center">

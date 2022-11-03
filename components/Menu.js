@@ -43,20 +43,20 @@ export default function Menu() {
                 <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={4} text="Закуски" bgColor="bg-[#D27643]"/>
                 <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={5} text="Супы" bgColor="bg-[#DBC473]"/>
                 <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={6} text="Горячее" bgColor="bg-[#FFA36F]"/>
-                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={7} text="Бургеры" bgColor="bg-[#4F85B6]"/>
-                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={8} text="Суши и роллы" bgColor="bg-[#B440DD]"/>
-                <CardForPhoneMenu altProp="Салаты" imgType="salats.png" click={9} text="Салаты" bgColor="bg-[#91BB5B]"/>
-                <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={10} text="Закуски" bgColor="bg-[#D27643]"/>
-                <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={11} text="Супы" bgColor="bg-[#DBC473]"/>
-                <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={12} text="Горячее" bgColor="bg-[#FFA36F]"/>
-                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={13} text="Бургеры" bgColor="bg-[#4F85B6]"/>
-                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={14} text="Суши и роллы" bgColor="bg-[#B440DD]"/>
-                <CardForPhoneMenu altProp="Салаты" imgType="salats.png" click={15} text="Салаты" bgColor="bg-[#91BB5B]"/>
-                <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={16} text="Закуски" bgColor="bg-[#D27643]"/>
-                <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={17} text="Супы" bgColor="bg-[#DBC473]"/>
-                <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={18} text="Горячее" bgColor="bg-[#FFA36F]"/>
-                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={19} text="Бургеры" bgColor="bg-[#4F85B6]"/>
-                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={20} text="Суши и роллы" bgColor="bg-[#B440DD]"/>
+                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={7} text="Детское меню" bgColor="bg-[#4F85B6]"/>
+                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={8} text="Пицца" bgColor="bg-[#B440DD]"/>
+                <CardForPhoneMenu altProp="Салаты" imgType="salats.png" click={9} text="Десерты" bgColor="bg-[#91BB5B]"/>
+                <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={10} text="Кофе" bgColor="bg-[#D27643]"/>
+                <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={11} text="Напитки на основе кофе" bgColor="bg-[#DBC473]"/>
+                <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={12} text="чай" bgColor="bg-[#FFA36F]"/>
+                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={13} text="Свежевыжатые соки" bgColor="bg-[#4F85B6]"/>
+                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={14} text="Соки" bgColor="bg-[#B440DD]"/>
+                <CardForPhoneMenu altProp="Салаты" imgType="salats.png" click={15} text="Газированные напитки" bgColor="bg-[#91BB5B]"/>
+                <CardForPhoneMenu altProp="Закуски" imgType="zakuski.png" click={16} text="Фирменные безалкогольные напитки" bgColor="bg-[#D27643]"/>
+                <CardForPhoneMenu altProp="Суп" imgType="creamsoup.png" click={17} text="Лимонады" bgColor="bg-[#DBC473]"/>
+                <CardForPhoneMenu altProp="Горячее блюдо" imgType="hotcategory.png" click={18} text="Молочные шейки" bgColor="bg-[#FFA36F]"/>
+                <CardForPhoneMenu altProp="Гамбургер" imgType="hamburger.png" click={19} text="Смузи" bgColor="bg-[#4F85B6]"/>
+                <CardForPhoneMenu altProp="Роллы" imgType="rollspng.png" click={20} text="Мороженное" bgColor="bg-[#B440DD]"/>
                
             </div>
         </motion.div>
@@ -185,7 +185,7 @@ export default function Menu() {
             <div name="BurgersMenu"><MenuTemplateForNonFilterterd typeForProducts={1} nameForMenu={`Бургеры`}/></div>
             <div name="RollsMenu"><RollsMenu/></div>
             <div name="SalatMenu"><MenuTemplateForNonFilterterd typeForProducts={3} nameForMenu={`Салаты`}/></div>
-            <div name="FionceMenu"><MenuTemplateForNonFilterterd typeForProducts={4} nameForMenu={`Закуски`}/></div>
+            {/* <div name="FionceMenu"><MenuTemplateForNonFilterterd typeForProducts={4} nameForMenu={`Закуски`}/></div>
             <div name="SoapMenu"><MenuTemplateForNonFilterterd typeForProducts={5} nameForMenu={`Супы`}/></div>
             <div name="HotMenu"><MenuTemplateForNonFilterterd typeForProducts={6} nameForMenu={`Горячее`}/></div>
             <div name="KidsMenu"><MenuTemplateForNonFilterterd typeForProducts={7} nameForMenu={`Детское меню`}/></div>
@@ -201,7 +201,7 @@ export default function Menu() {
             <div name="LemonadesMenu"><MenuTemplateForNonFilterterd typeForProducts={17} nameForMenu={`Лимонады`}/></div>
             <div name="MilkShakeMenu"><MenuTemplateForNonFilterterd typeForProducts={18} nameForMenu={`Молочные шейки`}/></div>
             <div name="SmizyMenu"><MenuTemplateForNonFilterterd typeForProducts={19} nameForMenu={`Смузи`}/></div>
-            <div name="IceCreamMenu"><MenuTemplateForNonFilterterd typeForProducts={20} nameForMenu={`Мороженное`}/></div>
+            <div name="IceCreamMenu"><MenuTemplateForNonFilterterd typeForProducts={20} nameForMenu={`Мороженное`}/></div> */}
 
 
         </>}

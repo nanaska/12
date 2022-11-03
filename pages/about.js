@@ -1,8 +1,11 @@
 import {Container} from "@chakra-ui/react";
 import Image from "next/image";
 import Head from "next/head";
-
+import { useDispatch } from "react-redux";
+import { setMenuFilter } from "../slices/menuSlice";
 export default function About() {
+    const dispatch = useDispatch()
+    dispatch(setMenuFilter(0))
     return (
         <><Head>
             <title>О компании</title>

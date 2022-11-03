@@ -14,7 +14,7 @@ import {
     Alert,
     AlertIcon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure
 } from '@chakra-ui/react'
-import SovetuemPoprobovat from "./SimpleSlider";
+
 import SimpleSlider from "./SimpleSlider";
 
 

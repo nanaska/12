@@ -2,8 +2,13 @@ import {YMaps, Map, Polyline} from "react-yandex-maps";
 import {motion, useScroll} from "framer-motion";
 import {Container} from "@chakra-ui/react";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { setMenuFilter } from "../slices/menuSlice";
+import { useEffect } from "react";
 
 export default function Delivery() {
+    const dispatch = useDispatch()
+    useEffect(()=>{dispatch(setMenuFilter(0))},[])
     const {scrollYProgress} = useScroll();
     const geoPolyg = [
         [
