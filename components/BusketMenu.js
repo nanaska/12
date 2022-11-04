@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import BusketItem from "./BusketItem";
 import {clearItems} from "../slices/busketSlice";
 import Image from "next/image";
-
+import { useEffect } from "react";
 import {authentication} from "../config/firebase";
 import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
