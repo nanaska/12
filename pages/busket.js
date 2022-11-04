@@ -3,6 +3,7 @@ import BusketMenu from "../components/BusketMenu";
 import {Container} from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { setMenuFilter } from "../slices/menuSlice";
+import { useEffect } from "react";
 
 export default function Busket() {
     const dispatch = useDispatch()
