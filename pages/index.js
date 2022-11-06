@@ -21,7 +21,6 @@ export default function Home() {
             {/*    initial="initial"*/}
             {/*    animate="animate"*/}
             {/*>*/}
-                    <img src="https://asset.cloudinary.com/dd7z5d3qu/97faf0f4c7e2fde8a19eb3087edf27e7" alt="123"/>
                 <Hero/>
                 {/*<motion.div variants={stagger}>*/}
                 {/*    <motion.div variants={fadeInUp}>*/}
