@@ -2,6 +2,8 @@ import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
 import {addItem, minusItem, removeItem} from "../slices/busketSlice";
 import { motion, AnimatePresence } from "framer-motion"
+
+
 export default function ItemCart({id, title,price,img,description, weight}){
     const dispatch = useDispatch()
     const {count} = useSelector(state => state.busketSlice.items.find(obj => obj.id === id)) || 0
@@ -36,8 +38,9 @@ export default function ItemCart({id, title,price,img,description, weight}){
             transition={{duration: .2}}
             exit={{ opacity: 0 }}
              className="flex relative  my-2   2xl:p-0   md:hover:shadow-2xl h-full w-full  rounded  flex-row md:flex-col items-center justify-center">
-            <div className="flex items-center   justify-center w-[50%] md:w-full">
+            <div className="flex items-center  mt-1 justify-center w-[50%] md:w-full">
                 <Image className="" src={img} alt={title} height={350} width={350}/>
+
             </div>
         <div className="absolute top-[-10px] right-2 ">
             <span className="font-[400] text-[18px] text-[#CBCBCB]">{weight} Г</span>

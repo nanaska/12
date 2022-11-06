@@ -633,6 +633,20 @@
   dependencies:
     "@chakra-ui/utils" "2.0.6"
 
+"@cloudinary/transformation-builder-sdk@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary/transformation-builder-sdk/-/transformation-builder-sdk-1.1.0.tgz#57913951fd110a10904a2ef573784a6afd8a89a9"
+  integrity sha512-BqhTqIwPTyQ4hE0NjKXf/bF7VAjwe2ZHNuypdG6oQ6bDoiLTOSzdAZsg0jFndureQiVPavBKOzQTjHImp45z/g==
+  dependencies:
+    "@cloudinary/url-gen" "^1.7.0"
+
+"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.6":
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.8.6.tgz#5d28c6957c01f3237230181387c818394ff30aab"
+  integrity sha512-BZUHOns1+ECmZTGlcWWZ1mM7Fu5TsSWqbknGCVtmhgX2g82kwZa3W3LhICMu/xyPjuQmz8ykjXHAkRw5kRZf+w==
+  dependencies:
+    "@cloudinary/transformation-builder-sdk" "^1.0.0"
+
 "@ctrl/tinycolor@^3.4.0":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz#75b4c27948c81e88ccd3a8902047bcd797f38d32"
@@ -3176,6 +3190,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
+
+next-cloudinary@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/next-cloudinary/-/next-cloudinary-0.8.0.tgz#32179e20368e8fc20c9060ba73b20eb7e3125fca"
+  integrity sha512-CkuwLF/E34WJ4ALjDyYQrQ6ZqXjuZ76Re8/y30HnHA2e9fMvFM0P7zMzzr64/s9N0pMwa7zGjSc36PKjFMEeZQ==
+  dependencies:
+    "@cloudinary/url-gen" "^1.8.6"
 
 next@12.2.3:
   version "12.2.3"
