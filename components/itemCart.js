@@ -35,11 +35,11 @@ export default function ItemCart({id, title,price,img,description, weight}){
             animate={{ opacity: 1}}
             transition={{duration: .2}}
             exit={{ opacity: 0 }}
-             className="flex relative     2xl:p-0   md:hover:shadow-2xl h-full w-full  rounded  flex-row md:flex-col items-center justify-center">
+             className="flex relative  my-2   2xl:p-0   md:hover:shadow-2xl h-full w-full  rounded  flex-row md:flex-col items-center justify-center">
             <div className="flex items-center   justify-center w-[50%] md:w-full">
                 <Image className="" src={img} alt={title} height={350} width={350}/>
             </div>
-        <div className="absolute top-[-20px] right-2 ">
+        <div className="absolute top-[-10px] right-2 ">
             <span className="font-[400] text-[18px] text-[#CBCBCB]">{weight} Г</span>
         </div>
         <div className="flex  items-center justify-center flex-col pr-2 w-[50%] md:w-full">

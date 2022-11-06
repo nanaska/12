@@ -13,7 +13,7 @@ export default function Contacts() {
         <title>Контакты</title>
     </Head><main className="flex items-center justify-center">
         <Container maxWidth={1580}>
-            <div className="flex mt-10 items-start py-2 justify-center">
+            <div className="flex md:flex-row flex-col mt-10 items-start py-2 justify-center">
                 <div className="flex flex-col items-start justify-start">
                     <h2 className="text-[24px]  font-bold ">Контакты</h2>
                     <div className="flex-col flex items-start justify-start">
