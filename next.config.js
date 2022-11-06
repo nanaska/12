@@ -4,7 +4,7 @@ const nextConfig = {
 
   swcMinify: true,
   images: {
-    domains: ['fikiwiki.com'],
+    domains: ['asset.cloudinary.com'],
   },
 }
 
