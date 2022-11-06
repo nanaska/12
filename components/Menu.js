@@ -185,7 +185,7 @@ export default function Menu() {
             <div name="BurgersMenu"><MenuTemplateForNonFilterterd typeForProducts={1} nameForMenu={`Бургеры`}/></div>
             <div name="RollsMenu"><RollsMenu/></div>
             <div name="SalatMenu"><MenuTemplateForNonFilterterd typeForProducts={3} nameForMenu={`Салаты`}/></div>
-            {/* <div name="FionceMenu"><MenuTemplateForNonFilterterd typeForProducts={4} nameForMenu={`Закуски`}/></div>
+            {/*<div name="FionceMenu"><MenuTemplateForNonFilterterd typeForProducts={4} nameForMenu={`Закуски`}/></div>
             <div name="SoapMenu"><MenuTemplateForNonFilterterd typeForProducts={5} nameForMenu={`Супы`}/></div>
             <div name="HotMenu"><MenuTemplateForNonFilterterd typeForProducts={6} nameForMenu={`Горячее`}/></div>
             <div name="KidsMenu"><MenuTemplateForNonFilterterd typeForProducts={7} nameForMenu={`Детское меню`}/></div>
@@ -201,8 +201,8 @@ export default function Menu() {
             <div name="LemonadesMenu"><MenuTemplateForNonFilterterd typeForProducts={17} nameForMenu={`Лимонады`}/></div>
             <div name="MilkShakeMenu"><MenuTemplateForNonFilterterd typeForProducts={18} nameForMenu={`Молочные шейки`}/></div>
             <div name="SmizyMenu"><MenuTemplateForNonFilterterd typeForProducts={19} nameForMenu={`Смузи`}/></div>
-            <div name="IceCreamMenu"><MenuTemplateForNonFilterterd typeForProducts={20} nameForMenu={`Мороженное`}/></div> */}
-
+            <div name="IceCreamMenu"><MenuTemplateForNonFilterterd typeForProducts={20} nameForMenu={`Мороженное`}/></div>
+*/}
 
         </>}
 

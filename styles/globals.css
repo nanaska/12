@@ -10,7 +10,13 @@ body {
   font-family: 'Montserrat', sans-serif;
 
 }
+*:focus {
+  box-shadow: none !important;
+}
 
+*[data-focus] {
+  box-shadow: none !important;
+}
 .swiper-pagination-bullet-active {
   background-color: #FFD2B0 !important;
 }

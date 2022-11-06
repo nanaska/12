@@ -97,15 +97,15 @@ export default function PizzaMenu() {
                 Роллы
             </div>
 
-            <Popover>
+            <Popover >
                 <PopoverTrigger>
                     <label  className="md:px-[50px] px-4 py-1 text-black cursor-pointer border border-2 rounded-[90px]  border-[#FF8932]">Фильтр пицц</label>
                 </PopoverTrigger>
                 <Portal>
-                    <PopoverContent p={0} m={0}>
+                    <PopoverContent  p={0} m={2} >
 
-                        <PopoverBody  p={0} m={0} >
-                            <ul  className=" grid sm:pl-8 grid-cols-1  items-left menu shadow bg-white border-none focus:border-none  rounded-box ">
+                        <PopoverBody  p={0} m={0}  >
+                            <ul  className=" grid  grid-cols-1  items-left menu shadow bg-white  ">
                                 <li onClick={() => {
                                     setTypeFilter1(false)
                                     setTypeFilter2(false)
@@ -114,7 +114,7 @@ export default function PizzaMenu() {
                                     setTypeFilter5(false)
                                     setTypeFilters(true)
                                     filterFunction(0)
-                                }}><div className={typeFilters ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  hover:underline"}><div className={typeFilters ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div>Всё</div></li>
+                                }}><div className={typeFilters ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  hover:underline"}><div className={typeFilters ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div>Без фильтров</div></li>
                                 <li onClick={() => {
                                     setTypeFilter1(!typeFilter1)
                                     setTypeFilters(false)

@@ -102,10 +102,10 @@ export default function PizzaMenu() {
                     <label  className="md:px-[50px] px-4 py-1 text-black cursor-pointer border border-2 rounded-[90px]  border-[#FF8932]">Фильтр пицц</label>
                 </PopoverTrigger>
                 <Portal>
-                    <PopoverContent p={0} m={0}>
+                    <PopoverContent p={0} m={2}>
 
                         <PopoverBody  p={0} m={0} >
-                            <ul  className=" grid sm:pl-8 grid-cols-1  items-center menu shadow bg-white border-none focus:border-none  rounded-box ">
+                            <ul  className=" grid  grid-cols-1  items-center menu shadow bg-white">
                                 <li onClick={() => {
                                     setTypeFilter1(false)
                                     setTypeFilter2(false)

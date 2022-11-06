@@ -39,7 +39,7 @@ function MyApp({Component, pageProps}) {
             </Head>
 
 
-                <ChakraProvider>
+                <ChakraProvider >
                     <Provider store={store}>
                         <div className="bg-[#EFEEEE]">
                             <Container maxWidth={1580}>
