@@ -8,7 +8,7 @@ import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import {useForm} from "react-hook-form";
 
-import {  RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
+import {RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
 
 import {
     Alert,
@@ -16,14 +16,17 @@ import {
 } from '@chakra-ui/react'
 
 import SimpleSlider from "./SimpleSlider";
-
+import Link from "next/link";
 
 
 export default function BusketMenu({}) {
     const [ad, setAD] = useState(true)
     const [ac, setAc] = useState(true)
     const dispatch = useDispatch()
+    const [agree, setAgree] = useState(false)
+    const [change, setChange] = useState(0)
     const [phone, setPhone] = useState("+7")
+
     const [code, setCode] = useState("")
     const [agrement, setAgrement] = useState(false)
     const [formData, setFormData] = useState(null)
@@ -49,29 +52,35 @@ export default function BusketMenu({}) {
             }
         }, authentication);
     }
+    const checkChange = () => {
+
+    }
     const onSubmit = async e => {
-        if(items.length === 0){
+        if (items.length === 0) {
             return alert("Вы не выбрали товар")
         }
         setFormData(e)
-
+        if (!agree){
+            return alert("Вы не ознакомились с условиями публичной оферты")
+        }
         if (phone.length >= 12) {
 
             generateRecaptcha()
             let appVerifier = window.recaptchaVerifier
             signInWithPhoneNumber(authentication, phone, appVerifier)
-                .then((confirmationResult)=>{
+                .then((confirmationResult) => {
                     window.confirmationResult = confirmationResult
                 }).catch(e => console.log(e))
 
             onOpen()
-        }else if(phone.length < 12){
+        } else if (phone.length < 12) {
             alert("Неправильный формат телефона")
         }
 
 
     }
-    async function fet(){
+
+    async function fet() {
         const newFormat = Object.values(items).map(elem => elem.title + " " + "x" + elem.count + " " + elem.price * elem.count + "Р").join("\n")
         let place = ""
         let payaproach = ""
@@ -110,36 +119,36 @@ export default function BusketMenu({}) {
 
         setTimeout(adawdsf, 10000)
     }
+
     const handleSignupForCode = async (e) => {
 
 
+        let confirmationResult = window.confirmationResult
+        confirmationResult.confirm(code).then(async (result) => {
+            // User signed in successfully.
+            const user = result.user;
+            await fet()
 
-            let confirmationResult = window.confirmationResult
-            confirmationResult.confirm(code).then(async (result) => {
-                // User signed in successfully.
-                const user = result.user;
-                await fet()
-
-                setExpandForm(false)
-                setAgrement(true)
-                onClose()
-            }).catch((error) => {
-                alert("Неправильный код")
-                console.log(error)
-            });
+            setExpandForm(false)
+            setAgrement(true)
+            onClose()
+        }).catch((error) => {
+            alert("Неправильный код")
+            console.log(error)
+        });
 
 
     }
-    useEffect(()=>{
-        if(phone[1] !== "7"){
+    useEffect(() => {
+        if (phone[1] !== "7") {
             setPhone("+7")
             console.log(7)
         }
-        if(phone[0] !== "+"){
+        if (phone[0] !== "+") {
             setPhone("+7")
             console.log("+")
         }
-    },[phone])
+    }, [phone])
     return (<div>
         <div className="items-center justify-center flex flex-col ">
             <div className="w-full mx-0 flex px-2 md:px-6 flex-col">
@@ -153,12 +162,35 @@ export default function BusketMenu({}) {
                         </div>
                     </div>}
                     {items.length == 0 && <div className="text-4xl m-2  flex flex-col  items-center justify-center">
-                        <div className="w-[130px] md:w-[230px]">
-                            <Image src={`/sad-face-2692.svg`} height={200} width={200}/>
+                        <div className="w-[130px] flex items-center justify-center md:w-[230px]">
+                            <svg width="168" height="168" viewBox="0 0 168 168" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M59 75.66C63.6005 75.66 67.33 71.9307 67.33 67.33C67.33 62.7295 63.6005 59 59 59C54.3995 59 50.67 62.7295 50.67 67.33C50.67 71.9307 54.3995 75.66 59 75.66Z"
+                                    fill="#ACACAC"/>
+                                <path
+                                    d="M100.66 125.66C100.66 116.459 93.2013 109 84 109C74.7987 109 67.34 116.459 67.34 125.66H50.68C50.68 107.258 65.5979 92.34 84 92.34C102.402 92.34 117.32 107.258 117.32 125.66H100.66Z"
+                                    fill="#ACACAC"/>
+                                <path
+                                    d="M117.33 67.33C117.33 71.9307 113.601 75.66 109 75.66C104.399 75.66 100.67 71.9307 100.67 67.33C100.67 62.7295 104.399 59 109 59C113.601 59 117.33 62.7295 117.33 67.33Z"
+                                    fill="#ACACAC"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M167.3 84C167.3 130.005 130.005 167.3 84 167.3C37.9947 167.3 0.700012 130.005 0.700012 84C0.700012 37.9947 37.9947 0.700012 84 0.700012C130.005 0.700012 167.3 37.9947 167.3 84ZM150.64 84C150.64 120.804 120.804 150.64 84 150.64C47.1957 150.64 17.36 120.804 17.36 84C17.36 47.1957 47.1957 17.36 84 17.36C120.804 17.36 150.64 47.1957 150.64 84Z"
+                                      fill="#ACACAC"/>
+                            </svg>
+
+
                         </div>
-                        <div className="flex mt-4 items-center text-center justify-center">
-                            Извините, вы пока еще ничего не добавили в корзину
+                        <div className="flex mt-4 text-[#acacac] font-semibold items-center text-center justify-center">
+                            Вы пока ничего не выбрали
                         </div>
+                        <div><Link href="/"><a>
+                            <button
+                                className="my-4  border text-[18px] hover:text-white hover:bg-[#FF8932] duration-75 px-6 text-black border-2 border-[#FF8932]  font-normal rounded-[90px]">Перейти
+                                в меню
+                            </button>
+
+                        </a></Link></div>
                     </div>}
 
                 </div>
@@ -166,7 +198,11 @@ export default function BusketMenu({}) {
                     <BusketItem key={content.id} title={content.title} price={content.price}
                                 img={content.img} count={content.count} id={content.id}/>
                 )}
-
+                <div className="flex flex-col my-3">
+                    <h2 className="text-[28px] text-3xl font-bold ">Советуем попробовать</h2>
+                    <div className="mt-3 mb-1"><SimpleSlider/>
+                    </div>
+                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col  lg:mx-0 mt-10 py-2">
                         <span className="text-3xl font-bold">Доставка :</span>
@@ -203,7 +239,8 @@ export default function BusketMenu({}) {
                             </div>
 
                             <div className="flex w-full flex-col  items-start justify-start">
-                                {agrement && <div className="w-full ml-2 text-grey-400 font-medium text-xs flex  justify-start items-start"> Подтверждено</div>}
+                                {agrement && <div
+                                    className="w-full ml-2 text-grey-400 font-medium text-xs flex  justify-start items-start"> Подтверждено</div>}
                                 <div className="w-full flex  justify-center items-start">
                                     <input
 
@@ -213,9 +250,8 @@ export default function BusketMenu({}) {
                                         })}
                                         maxLength="12"
 
-                                        onChange={(e)=> {
-                                           setPhone(e.target.value)
-
+                                        onChange={(e) => {
+                                            setPhone(e.target.value)
 
 
                                         }}
@@ -223,7 +259,6 @@ export default function BusketMenu({}) {
                                         value={phone}
                                         placeholder="Номер мобильного телефона: "
                                         className={`  border border-2 md:mr-1  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932] ${agrement && "ring-green-700 border-green-700 w-full"} w-full`}/>
-
 
 
                                 </div>
@@ -242,10 +277,7 @@ export default function BusketMenu({}) {
                                     <p className="pl-4 text-red-500 font-normal">Не указано имя</p>}</div>
                             </div>
                         </div>
-                        <div className="flex flex-col my-3">
-                            <h2 className="text-[28px] font-bold ">Советуем попробовать</h2>
-                            <div className="mt-3 mb-1"> <SimpleSlider/>
-                            </div> </div>
+
                         <div className=" flex flex-col">
 
                             <div
@@ -268,7 +300,7 @@ export default function BusketMenu({}) {
                             </div>
                             {!ac && <div>
                                 <input
-                                    {...register("time", {required:true})}
+                                    {...register("time", {required: true})}
                                     type="time"
                                     min="9:00"
                                     max="23:00"
@@ -317,6 +349,28 @@ export default function BusketMenu({}) {
                                 <span className="text-3xl font-bold">Стоимость заказа:</span>
                                 <span className="text-3xl font-bold">{totalPrice} ₽</span>
                             </div>
+                            <div className="flex my-5 items-center justify-start">
+                                <input
+                                    {...register("change", {required: true})}
+                                    type="number"
+                                    placeholder="Нужна сдача с:"
+                                    value={change}
+                                    onChange={(e) => setChange(e.currentTarget.value)}
+
+                                    className=" border border-2  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[12px] p-1 border-[#FF8932]"/>
+                                <div className="flex ml-5 items-center justify-center">
+                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(500)}>500</span>
+                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(1000)}>1000</span>
+                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(2000)}>2000</span>
+                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(5000)}>5000</span></div>
+                            </div>
+                            <div className="my-1">
+                                <div onClick={()=> {setChange(0)}} className={change === 0 ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  hover:underline"}><div className={change === 0 ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div><span className="pl-2 text-[16px]">Без сдачи</span></div>
+                            </div>
+                            <div className="my-1">
+                                <div onClick={()=> setAgree(!agree)} className={agree ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  "}><div className={agree ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div><span className="pl-2 text-[16px]">Соглашаюсь на распространение указанных в заказе персональных данных третьим лицам. С условиями <span className="underline cursor-pointer"><a href="">Публичной оферты</a></span> ознакомлен.</span></div>
+                            </div>
+
                             <button type="submit"
 
                                     className="w-full mt-4
@@ -337,34 +391,34 @@ export default function BusketMenu({}) {
                     <span className="text-xl pl-1 font-bold">{totalPrice} ₽</span>
                 </div>
             </div>
+
             {ale == true && <div className="fixed top-24 right-0"><Alert status='success'>
                 <AlertIcon/>
-                Спасибо за заказ 🙏! Скоро вам перезвонят для проверки информации.
+                Спасибо за заказ! Скоро вам перезвонят для проверки информации.
             </Alert></div>}
             <div>
-            <Modal isOpen={isOpen} closeOnOverlayClick={false}  size="xl" isCentered={true} onClose={onClose}>
-                <ModalOverlay/>
-                <ModalContent>
-                    <ModalBody>
-                        <div className="bg-grey-300 max-w-xl px-auto flex flex-col items-center justify-center">
-                            <span className="text-2xl my-4 mb-6 text-[#A9A9A9]">Подтверждение номера телефона</span>
-                            <input
-                                onChange={(e)=> {
-
-                                    setCode(e.target.value)
-
-
-
-                                }}
-                                type="number"
-                                value={code}
-                                placeholder="Код пришедший к вам через смс "
-                                className="focus:border-red-500 border border-2 md:mr-1  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] py-2 px-4 border-[#FF8932] w-[70%]"/>
-                            <button className="my-4 border px-3 bg-[#FF8932] border-2 border-[#FF8932] py-1.5 text-white rounded-[90px]" onClick={handleSignupForCode}>отправить код</button>
-                        </div>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+                <Modal isOpen={isOpen} closeOnOverlayClick={false} size="xl" isCentered={true} onClose={onClose}>
+                    <ModalOverlay/>
+                    <ModalContent>
+                        <ModalBody>
+                            <div className="bg-grey-300 max-w-xl px-auto flex flex-col items-center justify-center">
+                                <span className="text-2xl my-4 mb-6 text-[#A9A9A9]">Подтверждение номера телефона</span>
+                                <input
+                                    onChange={(e) => {
+                                        setCode(e.target.value)
+                                    }}
+                                    type="number"
+                                    value={code}
+                                    placeholder="Код пришедший к вам через смс "
+                                    className="focus:border-red-500 border border-2 md:mr-1  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] py-2 px-4 border-[#FF8932] w-[70%]"/>
+                                <button
+                                    className="my-4 border px-3 bg-[#FF8932] border-2 border-[#FF8932] py-1.5 text-white rounded-[90px]"
+                                    onClick={handleSignupForCode}>отправить код
+                                </button>
+                            </div>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
             </div>
             <div id="recaptcha-container"></div>
             {/*<div>Всего будет стоить: {totalPrice}</div>*/}

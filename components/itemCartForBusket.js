@@ -32,7 +32,7 @@ export default function ItemCartForBusket({id, title,price,img,description, weig
 
             <div
 
-                className="flex relative  md:w-[250px]  2xl:p-0   md:hover:shadow-2xl h-full w-full  rounded  flex-row md:flex-col items-center justify-center">
+                className="flex relative  md:w-[250px]  2xl:p-0    h-full w-full  rounded  flex-row md:flex-col items-center justify-center">
                 <div className="flex items-center   justify-center w-[50%] md:w-full">
                     <Image className="" src={img} alt={title} height={200} width={200}/>
                 </div>
