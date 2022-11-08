@@ -178,7 +178,10 @@ export default function BusketMenu({}) {
                     <BusketItem key={content.id} title={content.title} price={content.price}
                                 img={content.img} count={content.count} id={content.id}/>
                 )}
-
+                <div className="flex flex-col my-3">
+                            <h2 className="text-[28px] font-bold ">Советуем попробовать</h2>
+                            <div className="mt-3 mb-1"> <SimpleSlider/>
+                            </div> </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col  lg:mx-0 mt-10 py-2">
                         <span className="text-3xl font-bold">Доставка :</span>
@@ -254,10 +257,7 @@ export default function BusketMenu({}) {
                                     <p className="pl-4 text-red-500 font-normal">Не указано имя</p>}</div>
                             </div>
                         </div>
-                        <div className="flex flex-col my-3">
-                            <h2 className="text-[28px] font-bold ">Советуем попробовать</h2>
-                            <div className="mt-3 mb-1"> <SimpleSlider/>
-                            </div> </div>
+                        
                         <div className=" flex flex-col">
 
                             <div
