@@ -7,7 +7,7 @@ import {authentication} from "../config/firebase";
 import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import {useForm} from "react-hook-form";
-
+import { useTimer } from 'react-timer-hook';
 import {  RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
 
 import {
@@ -21,6 +21,7 @@ import SimpleSlider from "./SimpleSlider";
 
 export default function BusketMenu({}) {
     const [ad, setAD] = useState(true)
+    const [button, setButton] = useState(false)
     const [ac, setAc] = useState(true)
     const dispatch = useDispatch()
     const [phone, setPhone] = useState("+7")
@@ -36,7 +37,7 @@ export default function BusketMenu({}) {
     const onDeleteItems = () => {
         dispatch(clearItems())
     }
-
+    
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const {isOpen, onOpen, onClose} = useDisclosure()
 
@@ -49,6 +50,8 @@ export default function BusketMenu({}) {
             }
         }, authentication);
     }
+    const time = new Date();
+  
     const onSubmit = async e => {
         if(items.length === 0){
             return alert("Вы не выбрали товар")
@@ -63,13 +66,21 @@ export default function BusketMenu({}) {
                 .then((confirmationResult)=>{
                     window.confirmationResult = confirmationResult
                 }).catch(e => console.log(e))
+                onOpen()
 
-            onOpen()
         }else if(phone.length < 12){
             alert("Неправильный формат телефона")
         }
 
 
+    }
+    const onSub = () => {
+        let appVerifier = window.recaptchaVerifier
+        signInWithPhoneNumber(authentication, phone, appVerifier)
+            .then((confirmationResult)=>{
+                window.confirmationResult = confirmationResult
+            }).catch(e => console.log(e))
+        
     }
     async function fet(){
         const newFormat = Object.values(items).map(elem => elem.title + " " + "x" + elem.count + " " + elem.price * elem.count + "Р").join("\n")
@@ -116,7 +127,7 @@ export default function BusketMenu({}) {
 
             let confirmationResult = window.confirmationResult
             confirmationResult.confirm(code).then(async (result) => {
-                // User signed in successfully.
+               
                 const user = result.user;
                 await fet()
 
@@ -125,19 +136,20 @@ export default function BusketMenu({}) {
                 onClose()
             }).catch((error) => {
                 alert("Неправильный код")
-                console.log(error)
+               
             });
 
 
     }
     useEffect(()=>{
+       
         if(phone[1] !== "7"){
             setPhone("+7")
-            console.log(7)
+            
         }
         if(phone[0] !== "+"){
             setPhone("+7")
-            console.log("+")
+           
         }
     },[phone])
     return (<div>
@@ -187,7 +199,7 @@ export default function BusketMenu({}) {
                                     самому
                                 </div>
                             </div>
-                            <div className="w-full flex flex-col ">
+                            {del && <div className="w-full flex flex-col ">
                                 <input
                                     type="text"
 
@@ -197,12 +209,12 @@ export default function BusketMenu({}) {
                                     })
                                     }
                                     placeholder="Адрес: улица, дом"
-                                    className="mt-5 mb-5 border border-2 focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932]"/>
+                                    className="mt-5  border border-2 focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932]"/>
                                 <div>{errors?.adress &&
                                     <p className="pl-4 text-red-500 font-normal">Не указан адресс</p>}</div>
-                            </div>
+                            </div>}
 
-                            <div className="flex w-full flex-col  items-start justify-start">
+                            <div className="flex w-full mt-5 flex-col  items-start justify-start">
                                 {agrement && <div className="w-full ml-2 text-grey-400 font-medium text-xs flex  justify-start items-start"> Подтверждено</div>}
                                 <div className="w-full flex  justify-center items-start">
                                     <input
@@ -346,8 +358,9 @@ export default function BusketMenu({}) {
                 <ModalOverlay/>
                 <ModalContent>
                     <ModalBody>
-                        <div className="bg-grey-300 max-w-xl px-auto flex flex-col items-center justify-center">
+                        <div className="bg-grey-300 max-w-xl px-auto flex flex-col w-full items-center justify-center">
                             <span className="text-2xl my-4 mb-6 text-[#A9A9A9]">Подтверждение номера телефона</span>
+                            
                             <input
                                 onChange={(e)=> {
 
@@ -360,7 +373,9 @@ export default function BusketMenu({}) {
                                 value={code}
                                 placeholder="Код пришедший к вам через смс "
                                 className="focus:border-red-500 border border-2 md:mr-1  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] py-2 px-4 border-[#FF8932] w-[70%]"/>
-                            <button className="my-4 border px-3 bg-[#FF8932] border-2 border-[#FF8932] py-1.5 text-white rounded-[90px]" onClick={handleSignupForCode}>отправить код</button>
+                           
+                            <div className="flex mt-2 gap-x-4"><button className={`text-xs font-bold  ${!button && "text-gray-600"} ${button && "text-black"}`} onClick={onSub}>Получить код повторно</button></div>
+                            <button className="my-4 border px-3 bg-[#FF8932] border-2 border-[#FF8932] py-1.5 text-white rounded-[90px]"  onClick={handleSignupForCode}>Подтвердить телефон</button>
                         </div>
                     </ModalBody>
                 </ModalContent>
