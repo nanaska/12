@@ -223,7 +223,7 @@ export default function BusketMenu({}) {
                                     самому
                                 </div>
                             </div>
-                            <div className="w-full flex flex-col ">
+                            {del &&<div className="w-full flex flex-col ">
                                 <input
                                     type="text"
 
@@ -236,7 +236,7 @@ export default function BusketMenu({}) {
                                     className="mt-5 mb-5 border border-2 focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932]"/>
                                 <div>{errors?.adress &&
                                     <p className="pl-4 text-red-500 font-normal">Не указан адресс</p>}</div>
-                            </div>
+                            </div>}
 
                             <div className="flex w-full flex-col  items-start justify-start">
                                 {agrement && <div
