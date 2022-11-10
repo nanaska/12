@@ -11,10 +11,7 @@ export default function Home() {
         <div className="min-h-[100vh] ">
             <Head>
                 <title>Сагай Палермо</title>
-                <meta name="description" content="Ресторан Сагай Палермо рад новым гостям"/>
 
-                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-                <link rel="icon" href="/favicon.ico"/>
             </Head>
             {/*<motion.div*/}
             {/*    exit={{opacity: 0}}*/}
