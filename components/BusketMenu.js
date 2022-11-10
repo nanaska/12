@@ -26,7 +26,7 @@ export default function BusketMenu({}) {
     const [agree, setAgree] = useState(false)
     const [change, setChange] = useState(0)
     const [phone, setPhone] = useState("+7")
-
+    const [checkNrt, setCheckNrt] = useState({})
     const [code, setCode] = useState("")
     const [agrement, setAgrement] = useState(false)
     const [formData, setFormData] = useState(null)
@@ -52,8 +52,28 @@ export default function BusketMenu({}) {
             }
         }, authentication);
     }
-    const checkChange = () => {
 
+    const checkPhoneNumber = async () => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                number: phone
+
+            })
+        }
+        await fetch('api/checknumber', requestOptions)
+            .then(response => response.json())
+            .then(dataa => {
+                if (dataa.msg === true){
+                    setCheckNrt(true)
+                    return true
+                }
+                if (dataa.msg === false){
+                    setCheckNrt(false)
+                    return false
+                }
+            });
     }
     const onSubmit = async e => {
         if (items.length === 0) {
@@ -63,20 +83,26 @@ export default function BusketMenu({}) {
         if (!agree){
             return alert("Вы не ознакомились с условиями публичной оферты")
         }
-        if (phone.length >= 12) {
+        let a = await checkPhoneNumber()
+        console.log(checkNrt, a)
+        if (checkNrt) {
+            if (phone.length >= 12) {
 
-            generateRecaptcha()
-            let appVerifier = window.recaptchaVerifier
-            signInWithPhoneNumber(authentication, phone, appVerifier)
-                .then((confirmationResult) => {
-                    window.confirmationResult = confirmationResult
-                }).catch(e => console.log(e))
+                generateRecaptcha()
+                let appVerifier = window.recaptchaVerifier
+                signInWithPhoneNumber(authentication, phone, appVerifier)
+                    .then((confirmationResult) => {
+                        window.confirmationResult = confirmationResult
+                    }).catch(e => console.log(e))
 
-            onOpen()
-        } else if (phone.length < 12) {
-            alert("Неправильный формат телефона")
+                onOpen()
+            } else if (phone.length < 12) {
+                alert("Неправильный формат телефона")
+            }
         }
-
+        if (!checkNrt){
+            await fet()
+        }
 
     }
 
@@ -119,7 +145,21 @@ export default function BusketMenu({}) {
 
         setTimeout(adawdsf, 10000)
     }
+    const createPhoneNumber = async () => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                number: phone
 
+            })
+        }
+        await fetch('api/createnumber', requestOptions)
+            .then(response => response.json())
+            .then(dataa => {
+
+            });
+    }
     const handleSignupForCode = async (e) => {
 
 
@@ -127,14 +167,16 @@ export default function BusketMenu({}) {
         confirmationResult.confirm(code).then(async (result) => {
             // User signed in successfully.
             const user = result.user;
+            await createPhoneNumber()
             await fet()
 
             setExpandForm(false)
             setAgrement(true)
             onClose()
+
         }).catch((error) => {
             alert("Неправильный код")
-            console.log(error)
+
         });
 
 

@@ -13,7 +13,37 @@ body {
 *:focus {
   box-shadow: none !important;
 }
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__next{
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.embla__slide {
+  flex: 0 0 20%;
 
+}
+@media (max-width: 600px) {
+  .embla__slide {
+    flex: 0 0 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+
+  }
+
+}
+@media (max-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 60%;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
 *[data-focus] {
   box-shadow: none !important;
 }
