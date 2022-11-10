@@ -1,6 +1,5 @@
-import React, {Component, useEffect, useState, useCallback} from "react";
-import Slider from "react-slick";
-import ItemCart from "./itemCart";
+import React, { useEffect, useState, useCallback} from "react";
+
 import ItemCartForBusket from "./itemCartForBusket";
 import Image from "next/image";
 
