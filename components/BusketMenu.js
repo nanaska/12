@@ -275,12 +275,12 @@ export default function BusketMenu({}) {
                                     })
                                     }
                                     placeholder="Адрес: улица, дом"
-                                    className="mt-5 mb-5 border border-2 focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932]"/>
+                                    className="mt-5  border border-2 focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[35px] p-1 border-[#FF8932]"/>
                                 <div>{errors?.adress &&
                                     <p className="pl-4 text-red-500 font-normal">Не указан адресс</p>}</div>
                             </div>}
 
-                            <div className="flex w-full flex-col  items-start justify-start">
+                            <div className="flex w-full mt-5 flex-col  items-start justify-start">
                                 {agrement && <div
                                     className="w-full ml-2 text-grey-400 font-medium text-xs flex  justify-start items-start"> Подтверждено</div>}
                                 <div className="w-full flex  justify-center items-start">

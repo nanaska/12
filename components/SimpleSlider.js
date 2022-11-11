@@ -1,14 +1,16 @@
-import React, { useEffect, useState, useCallback} from "react";
+import React, { useEffect, useState} from "react";
 
 import ItemCartForBusket from "./itemCartForBusket";
-import Image from "next/image";
 
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 
 
+
 export default function  SimpleSlider() {
     const [content, setContent] = useState()
+
+
     const awdf = async (type, filters) => {
         if (filters) {
 
@@ -52,84 +54,11 @@ export default function  SimpleSlider() {
 
         awdf(22)
     }, [])
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={`md:w-[50px] w-[30px] h-[30px] md:h-[50px] absolute right-[-20px] z-50 top-[82px]`}
-
-                onClick={onClick}
-            ><div className="flex items-center justify-center">
-                <Image src={`/arrow.svg`} width={50} height={50}/>
-            </div></div>
-        );
-    }
-
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={`md:w-[50px] w-[30px] h-[30px] md:h-[50px] rotate-180  absolute left-[-20px] z-50 top-[80px]`}
-
-                onClick={onClick}
-            ><div className="flex items-center justify-center">
-                <Image src={`/arrow.svg`} width={50} height={50}/>
-            </div></div>
-        );
-    }
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        focusOnSelect: false,
-        slidesToScroll: 2,
-        // nextArrow: <SampleNextArrow />,
-        // prevArrow: <SamplePrevArrow />,
-        initialSlide: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 850,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }
-        ]
-    };
-
-
 
     const EmblaCarousel = () => {
-        const [emblaRef , emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
-        const scrollPrev = useCallback(() => {
-            if (emblaApi) emblaApi.scrollPrev()
-        }, [emblaApi])
+        const [emblaRef , emblaApi] = useEmblaCarousel({ loop: true, startIndex:1 }, [Autoplay({jump:false, delay: 3500, stopOnMouseEnter:true } )])
 
-        const scrollNext = useCallback(() => {
-            if (emblaApi) emblaApi.scrollNext()
-        }, [emblaApi])
-        return (
+        return (<>
             <div className="embla relative" ref={emblaRef}>
                 <div className="embla__container">
                     <div className="embla__slide">
@@ -171,7 +100,10 @@ export default function  SimpleSlider() {
 
                 </div>
 
+
             </div>
+
+        </>
         )
     }
         return (

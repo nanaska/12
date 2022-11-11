@@ -4,8 +4,8 @@ const nextConfig = {
 
   swcMinify: true,
   images: {
-    domains: ['res.cloudinary.com', "asset.cloudinary.com", "fikiwik"],
-  },
+    domains: ['res.cloudinary.com', "asset.cloudinary.com"]
+  }
 }
 
 module.exports = nextConfig
