@@ -400,7 +400,7 @@ export default function BusketMenu({}) {
                                     onChange={(e) => setChange(e.currentTarget.value)}
 
                                     className=" border border-2  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[12px] p-1 border-[#FF8932]"/>
-                                <div className="flex ml-5 items-center justify-center">
+                                <div className="flex flex-wrap ml-5 items-center justify-center">
                                     <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(500)}>500</span>
                                     <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(1000)}>1000</span>
                                     <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(2000)}>2000</span>

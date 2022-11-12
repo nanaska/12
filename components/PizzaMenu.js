@@ -67,7 +67,7 @@ export default function PizzaMenu() {
     }
     useEffect(() => {
 
-        awdf(9, filters)
+        awdf(8, filters)
     }, [filters])
 
 

@@ -17,7 +17,7 @@ export default function NavBarEnd(){
                 </div>}
                 <Image className="" alt="Корзина" src={Garbage} height={40} width={40}/>
             </div>
-            <a className=" flex items-center justify-center text-xl font-medium">Корзина</a>
+            <a className="hidden  md:flex items-center justify-center text-xl font-medium">Корзина</a>
         </div>
     </Link>)
 }

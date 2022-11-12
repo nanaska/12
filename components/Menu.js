@@ -29,7 +29,7 @@ export default function Menu() {
         }}
 
     },[])
-    return (<div className="md:p-0">
+    return (<div className="md:p-0 mx-auto">
 
         {typeMenuu == 0 && width < 768 && <AnimatePresence> <motion.div initial={{opacity: 0, x: -1000}} transition={{
             duration: .5,  type: "tween"}

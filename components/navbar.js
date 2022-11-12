@@ -7,10 +7,17 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import NavBarMenu from "./NavBarMenu";
 import LinkToVacation from "./LinkToVacation";
+import DrawerHamburger from "./drawerHamburger";
+import Image from "next/image";
+import {setMenuFilter} from "../slices/menuSlice";
+import {useDispatch, useSelector} from "react-redux";
+import LogoMenu from "./LogoMenu";
 
 export default function Navbar() {
     const router = useRouter()
     const [notMenu, setNotMenu] = useState(true)
+    const {typeMenuu} = useSelector(state => state.menuSlice)
+    const dispatch = useDispatch()
     useEffect(() => {
         if (router.pathname == "/") {
             setNotMenu(false)
@@ -20,9 +27,11 @@ export default function Navbar() {
     }, [router.pathname])
     return (<>
 
-            <div className="navbar  md:px-2.5 bg-base-100">
+            <div className="navbar   md:px-2.5 bg-base-100">
                 <div className="navbar-start">
                     <NavBarStart/>
+                        <div className="hidden md:flex"> <LogoMenu/>
+                    </div>
                     <ul className="menu menu-horizontal p-0  hidden lg:flex">
                         {notMenu && <NavBarMenu/>}
                         {!notMenu && <Popover trigger="hover">
@@ -207,8 +216,8 @@ export default function Navbar() {
                         </Popover>
                     </ul>
                 </div>
-                <div className="navbar-center">
-
+                <div className="navbar-center md:hidden flex justify-center items-center">
+                            <LogoMenu/>
 
                 </div>
                 <div className="navbar-end  flex flex-row space-x-1">
