@@ -9,6 +9,7 @@ export default function About() {
     return (
         <><Head>
             <title>О компании</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         </Head>
             <div className="flex items-center text-justify  justify-center"><Container maxWidth={1120}>
                 <div>

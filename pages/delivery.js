@@ -348,6 +348,7 @@ export default function Delivery() {
         <>
             <Head>
                 <title>Доставка</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             </Head>
             <div className="flex flex-col mx-auto  items-center justify-between">
                 <div className="mr-auto my-3 font-bold text-[32px] md:text-[48px]">

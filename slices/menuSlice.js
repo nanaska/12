@@ -3,7 +3,9 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     typeMenuu: 0,
     typeMenuu1: 0,
-    typeMenuu2: 0
+    typeMenuu2: 0,
+    phoneChecker: false,
+    promoChecker: ""
 
 }
 const menuSlice = createSlice({
@@ -19,9 +21,15 @@ const menuSlice = createSlice({
         },
         setMenuFilter2(state,action){
             state.typeMenuu2 = action.payload
+        },
+        setPhoneCheck(state,action){
+            state.phoneChecker = action.payload
+        },
+        setPromoCheck(state, action){
+            state.promoChecker = action.payload
         }
     }
 })
-export const {setMenuFilter} = menuSlice.actions
+export const {setMenuFilter, setPhoneCheck, setPromoCheck} = menuSlice.actions
 
 export default menuSlice.reducer

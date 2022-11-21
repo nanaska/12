@@ -12,10 +12,10 @@ export default async function handler(req, res) {
     })
 
     if (product.length > 0){
-        res.status(200).json(product[0].description)
+        res.status(200).json({desc: product[0].description, msg:true} )
     }
     if (product.length === 0){
-        res.status(200).json({msg: "Промокод не найден"})
+        res.status(200).json({msg: false})
     }
     prisma.$disconnect()
 

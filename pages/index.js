@@ -11,7 +11,7 @@ export default function Home() {
         <div className="min-h-[100vh] ">
             <Head>
                 <title>Сагай Палермо</title>
-
+                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             </Head>
             {/*<motion.div*/}
             {/*    exit={{opacity: 0}}*/}

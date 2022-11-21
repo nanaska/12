@@ -11,6 +11,7 @@ export default function Contacts() {
     
     return (<><Head>
         <title>Контакты</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     </Head><main className="flex items-center justify-center">
         <Container maxWidth={1580}>
             <div className="flex md:flex-row flex-col mt-10 items-start py-2 justify-center">

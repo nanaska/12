@@ -15,6 +15,7 @@ export default function Vacation() {
     return (<>
         <Head>
             <title>Вакансии</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         </Head>
         <Container maxWidth={1580}>
             <h2 className="mr-auto"><span className="text-[34px] font-bold">Вакансии</span></h2>

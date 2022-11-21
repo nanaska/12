@@ -17,6 +17,7 @@ import {
 
 import SimpleSlider from "./SimpleSlider";
 import Link from "next/link";
+import {setPromoCheck} from "../slices/menuSlice";
 
 
 export default function BusketMenu({}) {
@@ -24,9 +25,12 @@ export default function BusketMenu({}) {
     const [ac, setAc] = useState(true)
     const dispatch = useDispatch()
     const [agree, setAgree] = useState(false)
-    const [change, setChange] = useState(0)
+    const [change, setChange] = useState("")
     const [phone, setPhone] = useState("+7")
     const [checkNrt, setCheckNrt] = useState({})
+    const [statusOfPromoCode, setStatusOfPromocode] = useState(null)
+    const [titleOfPromoCode, setTitleOfPromoCode] = useState("")
+    const [promoDesc, SetPromoDesc] = useState(null)
     const [code, setCode] = useState("")
     const [agrement, setAgrement] = useState(false)
     const [formData, setFormData] = useState(null)
@@ -35,6 +39,7 @@ export default function BusketMenu({}) {
     const [del, setDel] = useState(true)
     const [m, setM] = useState(false)
     const {totalPrice, items} = useSelector(state => state.busketSlice)
+    const {promoChecker} = useSelector(state => state.menuSlice)
     const [ale, setAle] = useState(false)
     const onDeleteItems = () => {
         dispatch(clearItems())
@@ -53,59 +58,55 @@ export default function BusketMenu({}) {
         }, authentication);
     }
 
-    const checkPhoneNumber = async () => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                number: phone
-
-            })
-        }
-        await fetch('api/checknumber', requestOptions)
-            .then(response => response.json())
-            .then(dataa => {
-                if (dataa.msg === true){
-                    setCheckNrt(true)
-                    return true
-                }
-                if (dataa.msg === false){
-                    setCheckNrt(false)
-                    return false
-                }
-            });
-    }
+    useEffect(()=> {setTitleOfPromoCode(titleOfPromoCode.toUpperCase())},[titleOfPromoCode])
     const onSubmit = async e => {
         if (items.length === 0) {
             return alert("Вы не выбрали товар")
         }
         setFormData(e)
-        if (!agree){
+        if (!agree) {
             return alert("Вы не ознакомились с условиями публичной оферты")
         }
-        let a = await checkPhoneNumber()
-        console.log(checkNrt, a)
-        if (checkNrt) {
-            if (phone.length >= 12) {
+        if (phone.length >= 12) {
 
-                generateRecaptcha()
-                let appVerifier = window.recaptchaVerifier
-                signInWithPhoneNumber(authentication, phone, appVerifier)
-                    .then((confirmationResult) => {
-                        window.confirmationResult = confirmationResult
-                    }).catch(e => console.log(e))
+            generateRecaptcha()
+            let appVerifier = window.recaptchaVerifier
+            signInWithPhoneNumber(authentication, phone, appVerifier)
+                .then((confirmationResult) => {
+                    window.confirmationResult = confirmationResult
+                }).catch(e => console.log(e))
 
-                onOpen()
-            } else if (phone.length < 12) {
-                alert("Неправильный формат телефона")
-            }
+            onOpen()
+        } else if (phone.length < 12) {
+            alert("Неправильный формат телефона")
         }
-        if (!checkNrt){
-            await fet()
-        }
+
 
     }
+    const checkPromoCode = async (jopa) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                promo: jopa,
+            })
+        }
 
+        await fetch('api/checkpromo', requestOptions)
+            .then(response => response.json())
+            .then(dataa => {
+                if(dataa.msg === true){
+                    setStatusOfPromocode(true)
+                    dispatch(setPromoCheck(dataa.desc))
+                    console.log(promoChecker)
+                }
+                if(dataa.msg === false){
+                    setStatusOfPromocode(false)
+
+                }
+
+            });
+    }
     async function fet() {
         const newFormat = Object.values(items).map(elem => elem.title + " " + "x" + elem.count + " " + elem.price * elem.count + "Р").join("\n")
         let place = ""
@@ -126,11 +127,14 @@ export default function BusketMenu({}) {
                 totalPrice,
                 data: formData,
                 place,
+                change,
+                promoDesc: promoChecker,
                 time,
                 payaproach
 
             })
         }
+
         await fetch('api/message', requestOptions)
             .then(response => response.json())
             .then(dataa => {
@@ -145,6 +149,7 @@ export default function BusketMenu({}) {
 
         setTimeout(adawdsf, 10000)
     }
+
     const createPhoneNumber = async () => {
         const requestOptions = {
             method: 'POST',
@@ -167,7 +172,7 @@ export default function BusketMenu({}) {
         confirmationResult.confirm(code).then(async (result) => {
             // User signed in successfully.
             const user = result.user;
-            await createPhoneNumber()
+
             await fet()
 
             setExpandForm(false)
@@ -240,6 +245,12 @@ export default function BusketMenu({}) {
                     <BusketItem key={content.id} title={content.title} price={content.price}
                                 img={content.img} count={content.count} id={content.id}/>
                 )}
+                <div className="flex items-center gap-x-2 justify-start mt-3 select-none cursor-pointer flex max-w-[360px] items-center justify-center bg-[#646464]  p-1 rounded-[12px]">
+                    <input placeholder="Промокод" value={titleOfPromoCode} onChange={e => setTitleOfPromoCode(e.target.value)} className="bg-[#fff] px-5 py-1 my-1 rounded-[45px] "/>
+                    <button onClick={() => checkPromoCode(titleOfPromoCode)} className="bg-[#FF8932] px-5 py-1 my-1 rounded-[45px] ">Применить</button>
+                </div>
+                {statusOfPromoCode && statusOfPromoCode !== null && <div className="pl-4 text-green-600">Промокод активирован</div>}
+                {!statusOfPromoCode && statusOfPromoCode !== null &&<div className="pl-4 text-red-600">Извините, такого промокода не существует</div>}
                 <div className="flex flex-col my-3">
                     <h2 className="text-[28px] text-3xl font-bold ">Советуем попробовать</h2>
                     <div className="mt-3 mb-1"><SimpleSlider/>
@@ -265,7 +276,7 @@ export default function BusketMenu({}) {
                                     самому
                                 </div>
                             </div>
-                            {del &&<div className="w-full flex flex-col ">
+                            {del && <div className="w-full flex flex-col ">
                                 <input
                                     type="text"
 
@@ -401,16 +412,36 @@ export default function BusketMenu({}) {
 
                                     className=" border border-2  focus:ring focus:ring-[#FF8932] focus:outline-none rounded-[12px] p-1 border-[#FF8932]"/>
                                 <div className="flex flex-wrap ml-5 items-center justify-center">
-                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(500)}>500</span>
-                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(1000)}>1000</span>
-                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(2000)}>2000</span>
-                                    <span className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]" onClick={() => setChange(5000)}>5000</span></div>
+                                    <span
+                                        className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]"
+                                        onClick={() => setChange("500")}>500</span>
+                                    <span
+                                        className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]"
+                                        onClick={() => setChange("1000")}>1000</span>
+                                    <span
+                                        className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]"
+                                        onClick={() => setChange("2000")}>2000</span>
+                                    <span
+                                        className="px-1 underline cursor-pointer duration-75 text-[18px] hover:text-[#FF8932]"
+                                        onClick={() => setChange("5000")}>5000</span></div>
                             </div>
                             <div className="my-1">
-                                <div onClick={()=> {setChange(0)}} className={change === 0 ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  hover:underline"}><div className={change === 0 ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div><span className="pl-2 text-[16px]">Без сдачи</span></div>
+                                <div onClick={() => {
+                                    setChange("")
+                                }}
+                                     className={change === "" ? "w-full flex items-center justify-start " : "w-full flex items-center justify-start  hover:underline"}>
+                                    <div
+                                        className={change === "" ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" : "rounded-[90px] p-1 border border-[#000] border-2"}></div>
+                                    <span className="pl-2 text-[16px]">Без сдачи</span></div>
                             </div>
                             <div className="my-1">
-                                <div onClick={()=> setAgree(!agree)} className={agree ? "w-full flex items-center justify-start " :"w-full flex items-center justify-start  "}><div className={agree ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" :"rounded-[90px] p-1 border border-[#000] border-2"}></div><span className="pl-2 text-[16px]">Соглашаюсь на распространение указанных в заказе персональных данных третьим лицам. С условиями <span className="underline cursor-pointer"><a href="">Публичной оферты</a></span> ознакомлен.</span></div>
+                                <div onClick={() => setAgree(!agree)}
+                                     className={agree ? "w-full flex items-center justify-start " : "w-full flex items-center justify-start  "}>
+                                    <div
+                                        className={agree ? "rounded-[90px] p-1 border border-[#000] border-2 bg-[#FF8932]" : "rounded-[90px] p-1 border border-[#000] border-2"}></div>
+                                    <span className="pl-2 text-[16px]">Соглашаюсь на распространение указанных в заказе персональных данных третьим лицам. С условиями <span
+                                        className="underline cursor-pointer"><a download href="/offerta.pdf">Публичной оферты</a></span> ознакомлен.</span>
+                                </div>
                             </div>
 
                             <button type="submit"
