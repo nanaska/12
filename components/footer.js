@@ -23,7 +23,7 @@ export default function Footer() {
                         <div className="p-2 flex flex-col  justify-start">
                             <div className="text-[24px] flex items-center justify-center mb-4">МЕНЮ</div>
                             <div className=" space-x-4">
-                                <ul className="grid grid-cols-2 gap-y-2 gap-x-0">
+                                <ul className="grid grid-cols-2  gap-y-2 gap-x-0">
                                 <span onClick={() => {dispatch(setMenuFilter(1))
                                 checkRoute()}} className="my-2 text-[16px]">Бургеры</span>
                                     <li><span onClick={() => {dispatch(setMenuFilter(2))

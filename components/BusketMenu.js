@@ -27,10 +27,10 @@ export default function BusketMenu({}) {
     const [agree, setAgree] = useState(false)
     const [change, setChange] = useState("")
     const [phone, setPhone] = useState("+7")
-    const [checkNrt, setCheckNrt] = useState({})
+
     const [statusOfPromoCode, setStatusOfPromocode] = useState(null)
     const [titleOfPromoCode, setTitleOfPromoCode] = useState("")
-    const [promoDesc, SetPromoDesc] = useState(null)
+
     const [code, setCode] = useState("")
     const [agrement, setAgrement] = useState(false)
     const [formData, setFormData] = useState(null)

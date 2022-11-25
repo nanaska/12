@@ -114,10 +114,7 @@ export default function DrawerHamburger() {
                                     <h3 className="flex flex-1 text-[22px] p-2 pl-4 pt-0 "><a href="tel:+79610220220">8-961-022-02-20</a></h3>
                                 </div>
                                 </summary>
-                                <div className="pl-6 pr-2 flex flex-col ">
-                                    <span className="my-2 text-[16px]"><Link href='/contacts'><a >Контакты</a></Link></span>
 
-                                </div>
                             </details>
                         </div>
                     </DrawerBody>
